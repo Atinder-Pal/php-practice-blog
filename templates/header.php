@@ -11,5 +11,3 @@
 </head>
 <body>
     <h1>Welcome to <?php echo $GLOBALS['pageTitle']; ?></h1>
-</body>
-</html>
