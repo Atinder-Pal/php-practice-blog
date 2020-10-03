@@ -47,6 +47,7 @@
     </label>
     <input type="submit" value="Search">    
 </form>
+<!-- Another form to submit request for all blog posts -->
 <form action="index.php" method="GET">
     <input type="submit" value="Get all blog posts">
 </form>
