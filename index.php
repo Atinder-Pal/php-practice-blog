@@ -7,7 +7,12 @@
 
     // Show our header
     include dirname(__FILE__).'/templates/header.php';
-
+    // ===============Search Functionality===============
+    if ( !empty($_GET ))
+    {
+       $searchTerm = strtolower($_GET['searchTitle']);
+    }
+    // ==================================================
     // An array to store instances of BlogArticle
     $blogArticles = [];
     
@@ -16,7 +21,20 @@
         {
             foreach( $dataFromJsonFile->articlesArray as $blogArticle )
             {
-                array_push($blogArticles,new BlogArticle($blogArticle));                 
+                // ===============Search Functionality===============
+                if ( !empty($_GET ))
+                {
+                    if ( strtolower($blogArticle->title) == $searchTerm )
+                    {
+                        array_push($blogArticles,new BlogArticle($blogArticle));
+                    }
+                }
+                // ==================================================
+                else
+                {
+                    array_push($blogArticles,new BlogArticle($blogArticle));
+                }
+                                 
             }            
         }  
 ?>
@@ -27,7 +45,10 @@
         Search for Blogs by Title:
         <input id="searchTerm" type="text" name="searchTitle" value="">
     </label>
-    <input type="submit" value="Search">
+    <input type="submit" value="Search">    
+</form>
+<form action="index.php" method="GET">
+    <input type="submit" value="Get all blog posts">
 </form>
 
 <?php if ( !empty( $blogArticles )) : ?>
