@@ -22,6 +22,13 @@
 ?>
 
 <p><strong> Here you can see <?php echo $GLOBALS['author']; ?>'s favorite blogs.</strong></p>
+<form method= "GET" action="index.php">
+    <label for="searchTerm">
+        Search for Blogs by Title:
+        <input id="searchTerm" type="text" name="searchTitle" value="">
+    </label>
+    <input type="submit" value="Search">
+</form>
 
 <?php if ( !empty( $blogArticles )) : ?>
     <?php foreach( $blogArticles as $blogArticle ) $blogArticle->displayBlogArticle(); ?>
