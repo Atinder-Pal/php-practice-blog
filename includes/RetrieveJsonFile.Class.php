@@ -1,20 +1,20 @@
 <?php
 class RetrieveJsonFile
-{
-    public $pathToFile;
+{    
     public $articlesArray;
     function __construct ( $pathToFile='' )
     {
-        $this->pathToFile = $pathToFile;
+        $this->articlesArray = $this->retrieveDataFromJson( $pathToFile );
     }
 
-    public function retrieveDataFromJson()
+    public function retrieveDataFromJson( $pathToFile )
     {
-        $articlesFileAsString = file_get_contents( $this->pathToFile );
+        $articlesFileAsString = file_get_contents( $pathToFile );
         if ( $articlesFileAsString )
         {
-            $this->articlesArray = json_decode( $articlesFileAsString );
-        }        
+            $blogPosts = json_decode( $articlesFileAsString );
+        }    
+        return $blogPosts; 
     }
 }
 // $dataFromJsonFile = new RetrieveJsonFile( './data/articles.json' );

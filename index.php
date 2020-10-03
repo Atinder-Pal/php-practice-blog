@@ -10,15 +10,8 @@
 
     // An array to store instances of BlogArticle
     $blogArticles = [];
-    // //Retrieve json file contents in a variable as a string
-    // $articlesFileAsString = file_get_contents( dirname(__FILE__).'/data/articles.json' );
-    // //var_dump( $articlesFileAsString ); 
-    // if ( $articlesFileAsString )
-    // {
-    //     $articlesArray = json_decode( $articlesFileAsString );
-    //     //var_dump( $articlesArray );
-    $dataFromJsonFile = new RetrieveJsonFile( './data/articles.json' );
-    $dataFromJsonFile->retrieveDataFromJson();    
+    
+    $dataFromJsonFile = new RetrieveJsonFile( './data/articles.json' );       
         if( $dataFromJsonFile->articlesArray )
         {
             foreach( $dataFromJsonFile->articlesArray as $blogArticle )
@@ -26,7 +19,6 @@
                 array_push($blogArticles,new BlogArticle($blogArticle));                 
             }            
         }  
-
 ?>
 
 <p><strong> Here you can see <?php echo $GLOBALS['author']; ?>'s favorite blogs.</strong></p>
